@@ -1,0 +1,21 @@
+spring:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgresDialect
+      use-new-id-generator-mappings: true
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/service
+    username: postgres
+    password: postgres
+    type: com.zaxxer.hikari.HikariDataSource
+
+thymeleaf:
+  prefix: "templates/"
+  suffix: ".html"

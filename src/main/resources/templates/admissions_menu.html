@@ -1,0 +1,203 @@
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        input[type="text"], textarea {
+            font-size: 24px;
+            border-radius: 8px 8px 8px 8px;
+        }
+        textarea{
+            resize: none;
+        }
+        body {
+            font-size: 14px;
+        }
+        .clientfio_text {
+            width: 183px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 47px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .contact_number_text {
+            width: 360px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 108px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .manufacturer_text {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 169px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .additional_items_text {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 238px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .reason {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 336px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .clientfio {
+            width: 856px;
+            height: 53px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 37px;
+            left: 181px;
+            overflow: hidden;
+        }
+        .serial_number {
+            width: 235px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 494px;
+            overflow: hidden;
+        }
+        .additional_items {
+            width: 860px;
+            height: 78px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 220px;
+            left: 177px;
+            overflow: hidden;
+        }
+        .serial_number_text {
+            width: 133px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 162px;
+            left: 387px;
+            font-size: 20px;
+            opacity: 1;
+            text-align: left;
+        }
+        .manufacturer {
+            width: 168px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 176px;
+            overflow: hidden;
+        }
+        .model {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 167px;
+            left: 745px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .model_text {
+            width: 168px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 868px;
+            overflow: hidden;
+        }
+        .contact_number {
+            width: 654px;
+            height: 34px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 105px;
+            left: 383px;
+            overflow: hidden;
+        }
+        .reason_text {
+            width: 861px;
+            height: 83px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 325px;
+            left: 176px;
+            overflow: hidden;
+        }
+        .submit_button {
+            top: 406px;
+            position: absolute;
+            left: 30px;
+        }
+        @media print {
+
+            .submit_button {
+                visibility: hidden;
+            }
+        }
+
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Редагування прийомного документу</title></head>
+<body>
+<form action="#" method="post" th:object="${AdmissionDoc}">
+    <!--/*@thymesVar id="admission" type="me.Dex.ServiceMenu.Domain.AdmissionDoc"*/-->
+    <input type="hidden" name="id" th:field="${admission.id}">
+    <span class="clientfio_text">ФІО клієнта: </span>
+    <input type="text" class="clientfio" th:field="${admission.clientFIO}" name="clientFIO">
+
+    <span class="contact_number_text">Контактний номер телефону:</span>
+    <input type="text" class="contact_number" th:field="${admission.contactNumber}" name="contactNumber">
+
+    <span class="manufacturer_text">Виробник:</span>
+    <input type="text" class="manufacturer" th:field="${admission.manufacturer}" name="manufacturer">
+
+    <span class="additional_items_text">Комплект:</span>
+    <textarea maxlength="250" cols="2" class="additional_items" th:field="${admission.additionalItems}" name="additionalItems"></textarea>
+
+    <span class="serial_number_text">Серійний номер</span>
+    <input type="text" class="serial_number" th:field="${admission.serialNumber}" name="serialNumber">
+
+    <span class="model">Модель:</span>
+    <input type="text" class="model_text" th:field="${admission.model}" name="model">
+
+    <span class="reason">Причина звернення:</span>
+    <textarea maxlength="250" cols="2" class="reason_text" th:field="${admission.clientDescription}" name="clientDescription"></textarea>
+
+    <input th:if="${!admission.archived}" type="submit" class="submit_button" name="Submit">
+
+</form>
+</body>
+</html>
+

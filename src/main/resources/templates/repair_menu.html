@@ -1,0 +1,272 @@
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        input[type="text"], textarea {
+            font-size: 24px;
+            border-radius: 8px 8px 8px 8px;
+        }
+        textarea{
+            resize: none;
+        }
+        body {
+            font-size: 14px;
+        }
+        .clientfio_text {
+            width: 183px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 47px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .contact_number_text {
+            width: 360px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 108px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .manufacturer_text {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 169px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .additional_items_text {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 238px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .reason {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 336px;
+            left: 29px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .clientfio {
+            width: 856px;
+            height: 53px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 37px;
+            left: 181px;
+            overflow: hidden;
+        }
+        .serial_number {
+            width: 235px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 494px;
+            overflow: hidden;
+        }
+        .additional_items {
+            width: 860px;
+            height: 78px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 220px;
+            left: 177px;
+            overflow: hidden;
+        }
+        .serial_number_text {
+            width: 133px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 162px;
+            left: 387px;
+            font-size: 20px;
+            opacity: 1;
+            text-align: left;
+        }
+        .manufacturer {
+            width: 168px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 176px;
+            overflow: hidden;
+        }
+        .model {
+            width: 143px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 167px;
+            left: 745px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .model_text {
+            width: 168px;
+            height: 33px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 167px;
+            left: 868px;
+            overflow: hidden;
+        }
+        .contact_number {
+            width: 654px;
+            height: 34px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 105px;
+            left: 383px;
+            overflow: hidden;
+        }
+        .reason_text {
+            width: 861px;
+            height: 83px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 325px;
+            left: 176px;
+            overflow: hidden;
+        }
+        .submit_button {
+            top: 677px;
+            position: absolute;
+            left: 30px;
+        }
+        @media print {
+
+            .submit_button {
+                visibility: hidden;
+            }
+        }
+        .done_list {
+            width: 744px;
+            height: 182px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 431px;
+            left: 294px;
+            overflow: hidden;
+        }
+        .done_list_text {
+            width: 257px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 446px;
+            left: 27px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .repair_date_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 647px;
+            left: 27px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .fio_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 647px;
+            left: 538px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .repair_date {
+            width: 274px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 639px;
+            left: 208px;
+            overflow: hidden;
+        }
+        .fio {
+            width: 319px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 639px;
+            left: 719px;
+            overflow: hidden;
+        }
+
+
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Document</title></head>
+<body>
+<form action="#" method="post" th:object="${RepairDTO}">
+    <!--/*@thymesVar id="repair" type="me.Dex.ServiceMenu.DTO.RepairDTO"*/-->
+    <input type="hidden" name="id" th:field="${repair.id}">
+    <span class="clientfio_text">ФІО клієнта: </span>
+    <input disabled type="text" class="clientfio" th:field="${repair.clientFIO}" name="clientFIO">
+
+    <span class="contact_number_text">Контактний номер телефону:</span>
+    <input disabled type="text" class="contact_number" th:field="${repair.contactNumber}" name="contactNumber">
+
+    <span class="manufacturer_text">Виробник:</span>
+    <input disabled type="text" class="manufacturer" th:field="${repair.manufacturer}" name="manufacturer">
+
+    <span class="additional_items_text">Комплект:</span>
+    <textarea maxlength="250" cols="2" disabled type="text" class="additional_items" th:field="${repair.additionalItems}" name="additionalItems"></textarea>
+
+    <span class="serial_number_text">Серійний номер</span>
+    <input disabled type="text" class="serial_number" th:field="${repair.serialNumber}" name="serialNumber">
+
+    <span class="model">Модель:</span>
+    <input disabled type="text" class="model_text" th:field="${repair.model}" name="model">
+
+    <span class="reason">Причина звернення:</span>
+    <textarea maxlength="250" cols="2" disabled type="text" class="reason_text" th:field="${repair.clientDescription}" name="clientDescription"></textarea>
+
+    <span class="done_list_text">Висновок спеціаліста і перелік виконаних робіт</span>
+    <textarea maxlength="250" cols="6" class="done_list" th:field="${repair.repairResult}" name="repairResult"></textarea>
+
+    <span class="repair_date_text">Дата ремонту</span>
+    <input type="date" class="repair_date" th:field="${repair.repairDate}" name="repairDate"/>
+
+    <span class="fio_text">ФІО майстра</span>
+    <input type="text" class="fio" th:field="${repair.masterFIO}" name="masterFIO"/>
+
+    <input type="submit" class="submit_button" name="Submit">
+
+</form>
+</body>
+</html>
+
