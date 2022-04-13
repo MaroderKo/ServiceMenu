@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class AdmissionController {
+public class AdmissionDocController {
     @Autowired
     AdmissionDocService service;
 
@@ -19,14 +19,14 @@ public class AdmissionController {
         return "admissions";
     }
 
-    @GetMapping("/admissions/archived")
+    @GetMapping("/archive")
     public String archivedList(Model model)
     {
         model.addAttribute("admissions", service.getAllArchived());
         return "admissions";
     }
 
-    @GetMapping("/admissions/update")
+    @GetMapping("/admissions")
     public String edit(@RequestParam("id") Long id, Model model)
     {
         model.addAttribute("admission", service.read(id));
@@ -40,7 +40,7 @@ public class AdmissionController {
         return "admissions_menu";
     }
 
-    @PostMapping(value = {"/admissions/create", "/admissions/update"})
+    @PostMapping(value = {"/admissions/create", "/admissions"})
     public String save(@ModelAttribute AdmissionDoc doc, Model model)
     {
         service.create(doc);
@@ -59,9 +59,9 @@ public class AdmissionController {
     @RequestMapping("/admissions/restore")
     public String restore(@RequestParam("id") String id)
     {
-        Long longid = Long.getLong(id);
+        Long longid = Long.parseLong(id);
         service.setArchive(longid, false);
-        return "redirect:/";
+        return "redirect:/archive";
     }
 
 

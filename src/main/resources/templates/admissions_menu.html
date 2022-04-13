@@ -169,12 +169,12 @@
 
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Редагування прийомного документу</title></head>
+    <title>Прийомний документ</title></head>
 <body>
 <form action="#" method="post" th:object="${AdmissionDoc}">
     <!--/*@thymesVar id="admission" type="me.Dex.ServiceMenu.Domain.AdmissionDoc"*/-->
     <input type="hidden" name="id" th:field="${admission.id}">
-    <span class="clientfio_text">ФІО клієнта: </span>
+    <span class="clientfio_text">ПІБ клієнта: </span>
     <input type="text" class="clientfio" th:field="${admission.clientFIO}" name="clientFIO">
 
     <span class="contact_number_text">Контактний номер телефону:</span>

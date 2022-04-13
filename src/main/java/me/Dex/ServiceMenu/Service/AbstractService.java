@@ -5,6 +5,7 @@ import me.Dex.ServiceMenu.Domain.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class AbstractService<E extends Resource,R extends JpaRepository<E, Long>> {
@@ -16,11 +17,7 @@ public class AbstractService<E extends Resource,R extends JpaRepository<E, Long>
 
     public E create(E entity)
     {
-        if (entity instanceof AdmissionDoc)
-        {
-            ((AdmissionDoc) entity).setAdmissionDate(LocalDateTime.now());
-        }
-        repository.save(entity);
+        repository.saveAndFlush(entity);
         return repository.findById(entity.getId()).orElse(null);
     }
     public E read(Long id)

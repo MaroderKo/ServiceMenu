@@ -1,9 +1,11 @@
 package me.Dex.ServiceMenu.Domain;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -11,28 +13,26 @@ import java.time.LocalDateTime;
 @Data
 public class AdmissionDoc extends Resource{
     @Column
-    LocalDateTime admissionDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    protected Date admissionDate;
     @Column
-    String manufacturer;
+    protected String manufacturer;
     @Column
-    String model;
+    protected String model;
     @Column
-    String serialNumber;
+    protected String serialNumber;
     @Column
-    String clientDescription;
+    protected String clientDescription;
     @Column
-    String additionalItems;
+    protected String additionalItems;
     @Column
-    String clientFIO;
+    protected String clientFIO;
     @Column
-    String contactNumber;
+    protected String contactNumber;
     @Column(name = "archived")
-    boolean isArchived = false;
+    protected boolean isArchived = false;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     @JoinColumn(name = "repair_id")
     RepairDoc repairDoc = new RepairDoc();
-
-
-    //RepairDoc repairDoc;
 }

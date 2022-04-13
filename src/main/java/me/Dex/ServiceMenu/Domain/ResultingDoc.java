@@ -1,23 +1,20 @@
 package me.Dex.ServiceMenu.Domain;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Table
 @Data
 public class ResultingDoc extends Resource{
     @Column
-    String clientFIO;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    protected Date returnDate;
     @Column
-    String clientContactNumber;
-    @Column
-    LocalDateTime admissionDate;
-    @Column
-    LocalDateTime returnDate;
-    @Column
-    Float finalPrice;
+    protected Float finalPrice;
 
 }

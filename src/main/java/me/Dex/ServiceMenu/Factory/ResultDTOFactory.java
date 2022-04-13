@@ -1,22 +1,28 @@
 package me.Dex.ServiceMenu.Factory;
 
 import me.Dex.ServiceMenu.DTO.RepairDTO;
+import me.Dex.ServiceMenu.DTO.ResultDTO;
 import me.Dex.ServiceMenu.Domain.AdmissionDoc;
-import me.Dex.ServiceMenu.Domain.RepairDoc;
+import me.Dex.ServiceMenu.Domain.ResultingDoc;
 import me.Dex.ServiceMenu.Service.AdmissionDocService;
 import me.Dex.ServiceMenu.Service.RepairDocService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+import java.util.Optional;
+
 @Component
-public class RepairDTOFactory {
+public class ResultDTOFactory {
+    @Autowired
+    RepairDocService repairDocService;
 
     @Autowired
-    private AdmissionDocService admissionDocService;
+    AdmissionDocService admissionDocService;
 
-    public RepairDTO getById(Long id)
+    public ResultDTO getById(Long id)
     {
-        RepairDTO dto = new RepairDTO();
+        ResultDTO dto = new ResultDTO();
         AdmissionDoc admissionDoc = admissionDocService.read(id);
         dto.setAdmissionDate(admissionDoc.getAdmissionDate());
         dto.setManufacturer(admissionDoc.getManufacturer());
@@ -28,20 +34,23 @@ public class RepairDTOFactory {
         dto.setContactNumber(admissionDoc.getContactNumber());
         dto.setArchived(admissionDoc.isArchived());
 
-        dto.setId(admissionDoc.getRepairDoc().getId());
         dto.setRepairResult(admissionDoc.getRepairDoc().getRepairResult());
         dto.setRepairDate(admissionDoc.getRepairDoc().getRepairDate());
         dto.setMasterFIO(admissionDoc.getRepairDoc().getMasterFIO());
 
+        dto.setId(admissionDoc.getRepairDoc().getResultingDoc().getId());
+        dto.setReturnDate(admissionDoc.getRepairDoc().getResultingDoc().getReturnDate());
+        dto.setFinalPrice(admissionDoc.getRepairDoc().getResultingDoc().getFinalPrice());
+
         return dto;
     }
-    
-    public RepairDoc extract(RepairDTO dto)
+
+    public ResultingDoc extract(ResultDTO dto)
     {
-        RepairDoc doc = admissionDocService.read(dto.getId()).getRepairDoc();
-        doc.setRepairResult(dto.getRepairResult());
-        doc.setRepairDate(dto.getRepairDate());
-        doc.setMasterFIO(dto.getMasterFIO());
+        ResultingDoc doc = admissionDocService.read(dto.getId()).getRepairDoc().getResultingDoc();
+        doc.setReturnDate(dto.getReturnDate());
+        doc.setFinalPrice(dto.getFinalPrice());
+
         return doc;
     }
 }

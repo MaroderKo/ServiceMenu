@@ -155,7 +155,7 @@
             overflow: hidden;
         }
         .submit_button {
-            top: 677px;
+            top: 784px;
             position: absolute;
             left: 30px;
         }
@@ -225,46 +225,133 @@
             left: 719px;
             overflow: hidden;
         }
+        .admission_date_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 667px;
+            left: 27px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .return_date_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 667px;
+            left: 578px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .admission_date {
+            width: 274px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 663px;
+            left: 208px;
+            overflow: hidden;
+        }
+        .return_date {
+            width: 274px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 663px;
+            left: 763px;
+            overflow: hidden;
+        }
+        .price_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 739px;
+            left: 27px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .sign_text {
+            width: 176px;
+            color: rgba(0,0,0,1);
+            position: absolute;
+            top: 739px;
+            left: 578px;
+            font-size: 24px;
+            opacity: 1;
+            text-align: left;
+        }
+        .price {
+            width: 274px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 735px;
+            left: 208px;
+            overflow: hidden;
+        }
+        .sign {
+            width: 274px;
+            height: 44px;
+            background: rgba(196,196,196,1);
+            opacity: 1;
+            position: absolute;
+            top: 735px;
+            left: 763px;
+            overflow: hidden;
+        }
 
 
     </style>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Ремонтний документ</title></head>
+    <title>Редагування документу на видачу</title></head>
 <body>
-<form action="#" method="post" th:object="${RepairDTO}">
-    <!--/*@thymesVar id="repair" type="me.Dex.ServiceMenu.DTO.RepairDTO"*/-->
-    <input type="hidden" name="id" th:field="${repair.id}">
+<form action="#" method="post" th:object="${ResultDTO}">
+    <!--/*@thymesVar id="result" type="me.Dex.ServiceMenu.DTO.ResultDTO"*/-->
+    <input type="hidden" name="id" th:field="${result.id}">
     <span class="clientfio_text">ПІБ клієнта: </span>
-    <input disabled type="text" class="clientfio" th:field="${repair.clientFIO}" name="clientFIO">
+    <input disabled type="text" class="clientfio" th:field="${result.clientFIO}" name="clientFIO">
 
     <span class="contact_number_text">Контактний номер телефону:</span>
-    <input disabled type="text" class="contact_number" th:field="${repair.contactNumber}" name="contactNumber">
+    <input disabled type="text" class="contact_number" th:field="${result.contactNumber}" name="contactNumber">
 
     <span class="manufacturer_text">Виробник:</span>
-    <input disabled type="text" class="manufacturer" th:field="${repair.manufacturer}" name="manufacturer">
+    <input disabled type="text" class="manufacturer" th:field="${result.manufacturer}" name="manufacturer">
 
     <span class="additional_items_text">Комплект:</span>
-    <textarea maxlength="250" cols="2" disabled type="text" class="additional_items" th:field="${repair.additionalItems}" name="additionalItems"></textarea>
+    <textarea maxlength="250" cols="2" disabled type="text" class="additional_items" th:field="${result.additionalItems}" name="additionalItems"></textarea>
 
     <span class="serial_number_text">Серійний номер</span>
-    <input disabled type="text" class="serial_number" th:field="${repair.serialNumber}" name="serialNumber">
+    <input disabled type="text" class="serial_number" th:field="${result.serialNumber}" name="serialNumber">
 
     <span class="model">Модель:</span>
-    <input disabled type="text" class="model_text" th:field="${repair.model}" name="model">
+    <input disabled type="text" class="model_text" th:field="${result.model}" name="model">
 
     <span class="reason">Причина звернення:</span>
-    <textarea maxlength="250" cols="2" disabled type="text" class="reason_text" th:field="${repair.clientDescription}" name="clientDescription"></textarea>
+    <textarea maxlength="250" cols="2" disabled type="text" class="reason_text" th:field="${result.clientDescription}" name="clientDescription"></textarea>
 
     <span class="done_list_text">Висновок спеціаліста і перелік виконаних робіт</span>
-    <textarea maxlength="250" cols="6" class="done_list" th:field="${repair.repairResult}" name="repairResult"></textarea>
+    <textarea maxlength="250" disabled cols="6" class="done_list" th:field="${result.repairResult}" name="repairResult"></textarea>
 
-    <span class="repair_date_text">Дата ремонту</span>
-    <input type="date" class="repair_date" th:field="${repair.repairDate}" name="repairDate"/>
+    <span class="admission_date_text">Дата прийому</span>
+    <input type="date" disabled class="admission_date" name="admissionDate" th:field="${result.admissionDate}">
 
-    <span class="fio_text">ПІБ майстра</span>
-    <input type="text" class="fio" th:field="${repair.masterFIO}" name="masterFIO"/>
+    <span class="return_date_text">Дата видачі</span>
+    <input type="date" class="return_date" name="returnDate" th:field="${result.returnDate}">
 
-    <input type="submit" th:if="${!repair.archived}" class="submit_button" name="Submit">
+    <span class="price_text">До сплати</span>
+    <input type="number" min="0" max="1000000" checked class="price" th:field="${result.finalPrice}" name="finalPrice">
+
+    <span class="sign_text">Підпис клієнта</span>
+    <div class="sign"></div>
+
+
+    <input th:if="${!result.archived}" type="submit" class="submit_button" name="Submit">
 
 </form>
 </body>
